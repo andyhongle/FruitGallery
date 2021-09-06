@@ -5,10 +5,10 @@ import Modal from '../UI/Modal';
 const Fruit = (props) => {
     const [modalStatus, setModalStatus] = useState(false);
     const [fruitInfo, setFruitInfo] = useState();
-
+    
     const getFruitInfo = () => {
         let url = `https://fruityvice.com/api/fruit/${props.name}`
-        fetch(url, { headers: { 'Access-Control-Allow-Origin': '*'}})
+        fetch(url)
             .then(res => res.json())
             .then(json => setFruitInfo(json))
     };
