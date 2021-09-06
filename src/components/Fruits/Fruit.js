@@ -5,6 +5,7 @@ import Modal from '../UI/Modal';
 const Fruit = (props) => {
     const [modalStatus, setModalStatus] = useState(false);
     const [fruitInfo, setFruitInfo] = useState();
+    const [isFetched, setisFetched] = useState(false);
 
     const getFruitInfo = () => {
         // make api request here pass down info as props to modal
@@ -12,6 +13,7 @@ const Fruit = (props) => {
         fetch(url)
             .then(res => res.json())
             .then(json => {
+                setisFetched(true); //make sure we fetch data before modal can open
                 setFruitInfo(json);
             })
     };
@@ -30,7 +32,8 @@ const Fruit = (props) => {
     };
     return (
         <li className='fruit'>
-            {modalStatus && <Modal
+            {modalStatus && isFetched && 
+            <Modal
                 onModalClick={modalHandler}
                 info={fruitInfo}
             />}
