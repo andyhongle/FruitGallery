@@ -3,30 +3,21 @@ import './Fruit.css';
 import Modal from '../UI/Modal';
 
 const Fruit = (props) => {
-    const [modalStatus, setModalStatus] = useState(false);
-    const [fruitInfo, setFruitInfo] = useState(false);
-    const [isFetched, setisFetched] = useState(false);
-
+    const [modalStatus, setModalStatus] = useState(false)
+    const [fruitInfo, setFruitInfo] = useState()
+    
     const getFruitInfo = () => {
-        // make api request here pass down info as props to modal
         let url = `https://fruityvice.com/api/fruit/${props.name}`
         fetch(url)
-            .then(res => {
-                res.json()
-                console.log(res.ok)
-            })
+            .then(res => res.json())
             .then(json => {
                 setFruitInfo(json);
-                setisFetched(true); //make sure we fetch data before modal can open
             })
-
-    
     };
 
-    // make api calls at once. shouldn't be a problem on a static SPA.
     useEffect(() => {
         getFruitInfo();
-    })
+    }, [])
 
     const modalHandler = () => {
         if (modalStatus === false) {
@@ -35,19 +26,23 @@ const Fruit = (props) => {
             setModalStatus(false);
         }
     };
+
     return (
         <li className='fruit'>
-            {modalStatus && isFetched && fruitInfo &&
-            <Modal
-                onModalClick={modalHandler}
-                info={fruitInfo}
-            />}
-            <img
-                className='fruit-pic'
-                onClick={modalHandler}
-                src={`./images/${props.name}.png`}
-                alt={props.name}
-            />
+            <div>
+            {modalStatus && 
+                <Modal
+                    onModalClick={modalHandler}
+                    info={fruitInfo}
+                />}
+            {fruitInfo &&
+                <img
+                    className='fruit-pic'
+                    onClick={modalHandler}
+                    src={`./images/${props.name}.png`}
+                    alt={props.name}
+                    />}
+            </div>
         </li>
     )
 };
