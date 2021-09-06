@@ -1,0 +1,51 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  display: flex;
+  padding-top: 2%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  position: fixed;
+  top: 10vh;
+  left: 20%;
+  width: 60%;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.fruit-pic-name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    
+}
+
+.modal-fruit-pic {
+    width: 80%;
+    height: 80%;
+}
+
+.fruit-name {
+    width: 500px;
+    text-align: center;
+}
+
+.fruit-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding: 5%;
+    font-size: 18px;
+}
+

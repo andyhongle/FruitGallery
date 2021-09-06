@@ -1,0 +1,16 @@
+.fruit {
+    margin: 2%;
+    list-style: none;
+    width: 29.33%;
+    height: 30%;
+}
+
+.fruit-pic {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.fruit-pic:hover {
+    cursor: pointer;
+    opacity: 40%;
+}
