@@ -4,18 +4,23 @@ import Modal from '../UI/Modal';
 
 const Fruit = (props) => {
     const [modalStatus, setModalStatus] = useState(false);
-    const [fruitInfo, setFruitInfo] = useState();
+    const [fruitInfo, setFruitInfo] = useState(false);
     const [isFetched, setisFetched] = useState(false);
 
     const getFruitInfo = () => {
         // make api request here pass down info as props to modal
         let url = `https://fruityvice.com/api/fruit/${props.name}`
         fetch(url)
-            .then(res => res.json())
-            .then(json => {
-                setisFetched(true); //make sure we fetch data before modal can open
-                setFruitInfo(json);
+            .then(res => {
+                res.json()
+                console.log(res.ok)
             })
+            .then(json => {
+                setFruitInfo(json);
+                setisFetched(true); //make sure we fetch data before modal can open
+            })
+
+    
     };
 
     // make api calls at once. shouldn't be a problem on a static SPA.
@@ -32,7 +37,7 @@ const Fruit = (props) => {
     };
     return (
         <li className='fruit'>
-            {modalStatus && isFetched && 
+            {modalStatus && isFetched && fruitInfo &&
             <Modal
                 onModalClick={modalHandler}
                 info={fruitInfo}
