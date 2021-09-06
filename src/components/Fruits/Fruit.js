@@ -8,7 +8,7 @@ const Fruit = (props) => {
 
     const getFruitInfo = () => {
         let url = `https://fruityvice.com/api/fruit/${props.name}`
-        fetch(url, { mode: "no-cors" })
+        fetch(url)
             .then(res => res.json())
             .then(json => setFruitInfo(json))
     };
