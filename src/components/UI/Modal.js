@@ -4,7 +4,6 @@ import './Modal.css';
 const Modal = (props) => {
     return (
         <div>
-            {console.log(props)}
             <div className='backdrop' onClick={props.onModalClick}></div>
             <div className="modal">
                 <div className='fruit-pic-name-container'>
