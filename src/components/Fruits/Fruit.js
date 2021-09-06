@@ -9,7 +9,7 @@ const Fruit = (props) => {
 
     const getFruitInfo = () => {
         // make api request here pass down info as props to modal
-        let url = `http://fruityvice.com/api/fruit/${props.name}`
+        let url = `https://fruityvice.com/api/fruit/${props.name}`
         fetch(url)
             .then(res => res.json())
             .then(json => {
